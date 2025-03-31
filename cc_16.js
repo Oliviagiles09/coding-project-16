@@ -23,3 +23,28 @@ async function fetchProductsAsync() {
    handleError(error);
   }
 }
+// Task 4 
+function displayProducts(products) {
+  const container = document.getElementById('product-container');
+  container.innerHTML = '';  // Clear previous content
+
+  products.slice(0, 5).forEach(product => {
+    const productElement = document.createElement('div');
+    productElement.classList.add('product');
+
+    const productName = document.createElement('h2');
+    productName.textContent = product.name;
+
+    const productPrice = document.createElement('p');
+    productPrice.textContent = `$${product.price}`;
+
+    const productImage = document.createElement('img');
+    productImage.src = product.image;
+    productImage.alt = product.name;
+
+    productElement.appendChild(productName);
+    productElement.appendChild(productPrice);
+    productElement.appendChild(productImage);
+    container.appendChild(productElement);
+  });
+}
